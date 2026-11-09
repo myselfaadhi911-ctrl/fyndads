@@ -1,47 +1,16 @@
 [
   {
-    "id": "FYND-001",
-    "name": "Demo Employee 01",
-    "role": "Digital Marketing Executive",
+    "id": "FYND001",
+    "name": "Jahana Shirin",
+    "role": "Graphic Designer",
     "department": "Marketing",
-    "location": "Perinthalmanna, Kerala",
-    "phone": "",
-    "email": "",
-    "website": "https://fyndads.com",
-    "instagram": "",
+    "phone": "8714092806",
+    "email": "jahanasalam03@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/digiloom_jahana/",
     "linkedin": "",
-    "photo": "",
+    "photo": "assets/jahana-shirin.jpg",
     "status": "Active",
-    "bio": "Replace this demo profile with the employee's actual details before publishing."
-  },
-  {
-    "id": "FYND-002",
-    "name": "Demo Employee 02",
-    "role": "Creative Designer",
-    "department": "Creative",
-    "location": "Perinthalmanna, Kerala",
-    "phone": "",
-    "email": "",
-    "website": "https://fyndads.com",
-    "instagram": "",
-    "linkedin": "",
-    "photo": "",
-    "status": "Active",
-    "bio": "Replace this demo profile with the employee's actual details before publishing."
-  },
-  {
-    "id": "FYND-003",
-    "name": "Demo Employee 03",
-    "role": "Video Editor",
-    "department": "Production",
-    "location": "Perinthalmanna, Kerala",
-    "phone": "",
-    "email": "",
-    "website": "https://fyndads.com",
-    "instagram": "",
-    "linkedin": "",
-    "photo": "",
-    "status": "Active",
-    "bio": "Replace this demo profile with the employee's actual details before publishing."
+    "bio": "Graphic Designer at FYNDADS."
   }
 ]
