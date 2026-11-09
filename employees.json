@@ -23,18 +23,9 @@
     "website": "",
     "instagram": "https://www.instagram.com/sa_f_uz/",
     "linkedin": "",
-    "photo": "",
+    "photo": "assets/safuvan-fynd002.webp",
     "status": "Active",
-    "bio": "Graphic Designer at FYNDADS.",
-    "photoParts": [
-      "assets/photos/safuvan-01.txt",
-      "assets/photos/safuvan-02.txt",
-      "assets/photos/safuvan-03.txt",
-      "assets/photos/safuvan-04.txt",
-      "assets/photos/safuvan-05.txt",
-      "assets/photos/safuvan-06.txt",
-      "assets/photos/safuvan-07.txt"
-    ]
+    "bio": "Graphic Designer at FYNDADS."
   },
   {
     "id": "FYND003",
@@ -46,7 +37,8 @@
     "website": "",
     "instagram": "https://www.instagram.com/sanaa.grows?dlrf=MTVkZWx2MDl1MmUzOA==",
     "linkedin": "",
-    "photo": "",
+    "status": "Active",
+    "bio": "Digital Marketer at FYNDADS.",
     "photoParts": [
       "assets/photos/sana-fynd003-01.txt",
       "assets/photos/sana-fynd003-02.txt",
@@ -54,9 +46,7 @@
       "assets/photos/sana-fynd003-04.txt",
       "assets/photos/sana-fynd003-05.txt",
       "assets/photos/sana-fynd003-06.txt"
-    ],
-    "status": "Active",
-    "bio": "Digital Marketer at FYNDADS."
+    ]
   },
   {
     "id": "FYND004",
@@ -82,15 +72,14 @@
     "website": "",
     "instagram": "https://www.instagram.com/aadhillsha?cplk=MXNkNzY0aHNvaXdlOQ==",
     "linkedin": "",
-    "photo": "",
+    "status": "Active",
+    "bio": "Head of the Department at FYNDADS.",
     "photoParts": [
       "assets/photos/adhilsha-fynd005-01.txt",
       "assets/photos/adhilsha-fynd005-02.txt",
       "assets/photos/adhilsha-fynd005-03.txt",
       "assets/photos/adhilsha-fynd005-04.txt",
       "assets/photos/adhilsha-fynd005-05.txt"
-    ],
-    "status": "Active",
-    "bio": "Head of the Department at FYNDADS."
+    ]
   }
 ]

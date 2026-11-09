@@ -1,59 +1,23 @@
-# FYNDADS Employee Digital ID
+# FYND ADZ – Employee Digital ID (v2)
 
-Public, mobile-friendly employee directory with individual profile pages and QR code downloads.
+Animated employee directory with individual digital ID profiles, flip-card QR codes, downloadable QR PNGs and vCard contacts. Built with plain HTML, CSS and JavaScript for GitHub Pages.
 
-## Public website
-https://myselfaadhi911-ctrl.github.io/fyndads/
+## Deployment
 
-## Public features
-- Searchable employee directory and department filter
-- Individual profile URLs: `?id=FYND001`
-- QR code preview and PNG download for each employee
-- Call, WhatsApp, email, social links and downloadable vCard contact
-- Responsive FYNDADS purple theme
+The live site is hosted from the `main` branch using GitHub Pages. The public URL and existing `?id=FYND001` through `?id=FYND005` profile links are preserved, so previously printed QR codes continue to work.
 
-## Admin access (restricted through GitHub)
-The public website does not provide Add, Edit or Delete employee forms. The **Admin Login** link opens the repository's `employees.json` editor on GitHub.
+## Employee administration
 
-Only GitHub accounts with write permission to this repository can commit employee changes to the live site. Keep repository write access limited to the FYNDADS administrator. Do not grant collaborator write access unless you intend to let that person update employee records.
+The **Admin** link opens `employees.json` in GitHub. Saving changes requires being signed in to an account with repository write permission. This keeps employee edits restricted to authorized GitHub collaborators; visitors cannot add employees from the public website.
 
-### Add or update an employee
-1. Sign in to GitHub using the FYNDADS administrator account.
-2. Open the website's **Admin Login** link, or open:
-   https://github.com/myselfaadhi911-ctrl/fyndads/edit/main/employees.json
-3. Edit the JSON employee array. Keep every `id` unique.
-4. Click **Commit changes** to publish the updated directory.
-5. For a profile photo, upload the image to the repository's `assets/` folder, then set its relative path in the employee's `photo` field (for example, `assets/jahana-shirin.jpg`).
+To add a person, add a record to `employees.json`, give them a unique `FYND###` ID, add their photo under `assets/people/` (or use `photoParts` for the pre-split image data already in `assets/photos/`), and set `status` to `Active`. Use `Inactive` to hide a profile without deleting its QR target.
 
-Example record:
-```json
-{
-  "id": "FYND004",
-  "name": "Employee Name",
-  "role": "Designation",
-  "department": "Marketing",
-  "phone": "",
-  "email": "",
-  "website": "",
-  "instagram": "",
-  "linkedin": "",
-  "photo": "",
-  "status": "Active",
-  "bio": ""
-}
-```
+## Project files
 
-### Why GitHub is used for admin permissions
-GitHub Pages is static hosting and cannot securely protect an administrator password or write changes to a shared database on its own. The Admin Login link uses GitHub's own sign-in and repository write permissions instead of a password embedded in public website code. This means only the repository owner (and any collaborators deliberately granted write access) can publish employee changes. Do not add a client-side password to the website; visitors can inspect static website code.
+- `index.html` – page structure and external QR library
+- `css/style.css` – responsive visual design, motion and layouts
+- `js/app.js` – directory, profiles, QR generation, vCard export, interactions and image loading
+- `employees.json` – employee details and photo references
+- `assets/` – brand artwork, fonts and employee photos
 
-## QR codes
-1. Open the public site.
-2. Find the employee card and click **QR code**.
-3. Click **Download QR PNG**.
-4. Scan-test the image before printing it on the employee ID card.
-
-QR codes contain the employee's stable profile URL. Keep the employee ID and website URL unchanged to keep already printed QR codes working after profile details are updated.
-
-## Privacy
-This repository and website are public. Only publish employee details and photos with the employee's permission. Do not add passwords, personal identification numbers, financial information or other sensitive data.
-QR code generation uses the QRCode.js library via a public CDN and needs an internet connection.
+The QR code library is loaded from cdnjs, so generating QR codes requires an internet connection.
