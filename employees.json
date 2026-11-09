@@ -1,0 +1,47 @@
+[
+  {
+    "id": "FYND-001",
+    "name": "Demo Employee 01",
+    "role": "Digital Marketing Executive",
+    "department": "Marketing",
+    "location": "Perinthalmanna, Kerala",
+    "phone": "",
+    "email": "",
+    "website": "https://fyndads.com",
+    "instagram": "",
+    "linkedin": "",
+    "photo": "",
+    "status": "Active",
+    "bio": "Replace this demo profile with the employee's actual details before publishing."
+  },
+  {
+    "id": "FYND-002",
+    "name": "Demo Employee 02",
+    "role": "Creative Designer",
+    "department": "Creative",
+    "location": "Perinthalmanna, Kerala",
+    "phone": "",
+    "email": "",
+    "website": "https://fyndads.com",
+    "instagram": "",
+    "linkedin": "",
+    "photo": "",
+    "status": "Active",
+    "bio": "Replace this demo profile with the employee's actual details before publishing."
+  },
+  {
+    "id": "FYND-003",
+    "name": "Demo Employee 03",
+    "role": "Video Editor",
+    "department": "Production",
+    "location": "Perinthalmanna, Kerala",
+    "phone": "",
+    "email": "",
+    "website": "https://fyndads.com",
+    "instagram": "",
+    "linkedin": "",
+    "photo": "",
+    "status": "Active",
+    "bio": "Replace this demo profile with the employee's actual details before publishing."
+  }
+]
