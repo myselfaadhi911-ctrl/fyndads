@@ -12,5 +12,19 @@
     "photo": "assets/jahana-shirin.webp",
     "status": "Active",
     "bio": "Graphic Designer at FYNDADS."
+  },
+  {
+    "id": "FYND002",
+    "name": "Safuvan",
+    "role": "Graphic Designer",
+    "department": "Marketing",
+    "phone": "7510272077",
+    "email": "safuvan7safuz@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/sa_f_uz/",
+    "linkedin": "",
+    "photo": "assets/safuvan-fynd002.webp",
+    "status": "Active",
+    "bio": "Graphic Designer at FYNDADS."
   }
 ]
