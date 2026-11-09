@@ -57,5 +57,19 @@
     ],
     "status": "Active",
     "bio": "Digital Marketer at FYNDADS."
+  },
+  {
+    "id": "FYND004",
+    "name": "Mirsa Hisham",
+    "role": "Graphic Designer",
+    "department": "Marketing",
+    "phone": "8138867601",
+    "email": "mirsahishamvailongara940@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/mirsa_hisham/",
+    "linkedin": "",
+    "photo": "",
+    "status": "Active",
+    "bio": "Graphic Designer at FYNDADS."
   }
 ]
