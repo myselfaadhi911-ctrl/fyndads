@@ -71,5 +71,26 @@
     "photo": "",
     "status": "Active",
     "bio": "Graphic Designer at FYNDADS."
+  },
+  {
+    "id": "FYND005",
+    "name": "Adhilsha Mohammed",
+    "role": "Head of the Department",
+    "department": "FYNDADS",
+    "phone": "9846766751",
+    "email": "adhilshamohammed911@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/aadhillsha?cplk=MXNkNzY0aHNvaXdlOQ==",
+    "linkedin": "",
+    "photo": "",
+    "photoParts": [
+      "assets/photos/adhilsha-fynd005-01.txt",
+      "assets/photos/adhilsha-fynd005-02.txt",
+      "assets/photos/adhilsha-fynd005-03.txt",
+      "assets/photos/adhilsha-fynd005-04.txt",
+      "assets/photos/adhilsha-fynd005-05.txt"
+    ],
+    "status": "Active",
+    "bio": "Head of the Department at FYNDADS."
   }
 ]
