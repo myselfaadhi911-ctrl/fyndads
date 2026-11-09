@@ -199,6 +199,18 @@ h1 .accent{color:#b36af8;text-shadow:0 0 34px rgba(154,66,245,.20)}
 .marquee-track:hover{animation-play-state:paused}
 @media(max-width:640px){.motion-marquee{padding:14px 0}.marquee-track{gap:19px;animation-duration:25s}.marquee-track span{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.scroll-progress{display:none}.marquee-track{animation:none}.scroll-reveal{opacity:1;filter:none;translate:0 0;transition:none}.text-motion{animation:none!important;translate:0 0!important}}
+
+/* Gentle scroll-linked parallax: subtle movement, not distracting */
+.scroll-depth{translate:0 var(--scroll-shift,0px);will-change:translate}
+.hero-visual .brand-emblem{transition:box-shadow .35s ease}
+.team-section .employee-photo img{will-change:transform}
+.team-section .employee-photo{background:radial-gradient(circle at 50% 35%,#43245b,#16101d 72%)}
+.team-section .employee-card{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .25s,box-shadow .35s}
+.team-section .employee-card.is-visible:hover{transform:translateY(-7px) scale(1.008)}
+.team-section .section-head h2{transition:letter-spacing .6s ease,text-shadow .6s ease}
+.team-section .section-head.is-visible h2{letter-spacing:1.2px;text-shadow:0 0 22px rgba(154,66,245,.12)}
+@media(max-width:640px){.scroll-depth{translate:0 calc(var(--scroll-shift,0px)*.55)}}
+@media(prefers-reduced-motion:reduce){.scroll-depth{translate:none!important;will-change:auto}}
 </style>
 </head>
 <body><div class="scroll-progress" aria-hidden="true"><span id="scrollProgressFill"></span></div><div class="cursor-ring" id="cursorRing" aria-hidden="true"></div><div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -329,8 +341,9 @@ function runIntro(){const intro=$('introOverlay');if(!intro)return;const directP
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).classList.remove('show')));
 let scrollRevealObserver=null;
 function setupScrollReveal(root=document){const selector='.hero-copy .kicker,.hero-copy h1,.hero-copy>p,.hero-actions,.hero-visual,.motion-marquee,.team-section .section-head,.team-section .toolbar,.team-section .employee-card,.team-section .notice,.footer>* ,#profileView .back,#profileView .profile-card,#profileView .detail,#profileView .profile-actions';const targets=root.querySelectorAll(selector);if(!targets.length)return;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced||!('IntersectionObserver' in window)){targets.forEach(el=>el.classList.add('scroll-reveal','is-visible'));return}if(!scrollRevealObserver){scrollRevealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');scrollRevealObserver.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -45px 0px'})}targets.forEach((el,i)=>{if(el.classList.contains('scroll-reveal'))return;el.classList.add('scroll-reveal');el.style.setProperty('--reveal-delay',Math.min(i%8,7)*70+'ms');scrollRevealObserver.observe(el)})}
+function initScrollMotion(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const selector='.hero-visual .brand-emblem,.hero-copy h1,.team-section .section-head h2,.team-section .employee-photo img,#profileView .profile-portrait img';let items=[];const collect=root=>{if(root.matches&&root.matches(selector))items.push(root);root.querySelectorAll&&root.querySelectorAll(selector).forEach(el=>items.push(el))};collect(document);let queued=false;const update=()=>{const vh=window.innerHeight||1;items=items.filter(el=>el.isConnected);items.forEach((el,i)=>{const rect=el.getBoundingClientRect();if(rect.bottom<-80||rect.top>vh+80)return;const center=rect.top+rect.height*.5;const offset=(center-vh*.5)/vh;const strength=el.matches('.hero-visual .brand-emblem')?24:el.matches('.hero-copy h1')?13:el.matches('.team-section .employee-photo img,#profileView .profile-portrait img')?10:8;el.style.setProperty('--scroll-shift',(-offset*strength).toFixed(1)+'px')});queued=false};const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(update)}};document.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});const observer=new MutationObserver(()=>{items=[];collect(document);schedule()});observer.observe(document.getElementById('employeeGrid')||document.body,{childList:true,subtree:true});schedule()}
 function initScrollProgress(){const fill=$('scrollProgressFill');if(!fill)return;let queued=false;const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;const progress=max>0?window.scrollY/max:0;fill.style.transform='scaleX('+Math.max(0,Math.min(1,progress))+')';queued=false};document.addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(update)}},{passive:true});window.addEventListener('resize',update,{passive:true});update()}
-$('directoryBtn').onclick=goDirectory;$('searchInput').addEventListener('input',renderDirectory);$('departmentFilter').addEventListener('change',renderDirectory);$('downloadQr').onclick=downloadQr;$('copyQrLink').onclick=copyQrLink;$('year').textContent=new Date().getFullYear();$('exploreBtn').onclick=ev=>{ev.preventDefault();$('team').scrollIntoView({behavior:'smooth'})};initCustomCursor();initScrollProgress();runIntro();animateText(document);setupScrollReveal();loadEmployees();
+$('directoryBtn').onclick=goDirectory;$('searchInput').addEventListener('input',renderDirectory);$('departmentFilter').addEventListener('change',renderDirectory);$('downloadQr').onclick=downloadQr;$('copyQrLink').onclick=copyQrLink;$('year').textContent=new Date().getFullYear();$('exploreBtn').onclick=ev=>{ev.preventDefault();$('team').scrollIntoView({behavior:'smooth'})};initCustomCursor();initScrollProgress();initScrollMotion();runIntro();animateText(document);setupScrollReveal();loadEmployees();
 </script>
 </body>
 </html>
