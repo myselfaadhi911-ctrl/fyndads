@@ -37,7 +37,7 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const initials=n=>(n||'FYNDADS').trim().split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase();
 const profileUrl=e=>location.origin+location.pathname+'?id='+encodeURIComponent(e.id);
-function safeUrl(s){try{let u=new URL(s);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}}
+function safeUrl(s){try{let u=new URL(s,location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}}
 async function loadEmployees(){try{const r=await fetch(DATA_URL,{cache:'no-store'});if(!r.ok)throw Error();const base=await r.json();const local=localStorage.getItem(STORAGE_KEY);employees=local?JSON.parse(local):base;if(!Array.isArray(employees))employees=base}catch(e){try{employees=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch{employees=[]}}renderDirectory();const id=new URLSearchParams(location.search).get('id');if(id)showProfile(id)}
 function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(employees,null,2))}
 function avatar(e,cls='avatar'){return e.photo&&safeUrl(e.photo)?'<div class="'+cls+'"><img src="'+esc(safeUrl(e.photo))+'" alt=""></div>':'<div class="'+cls+'">'+esc(initials(e.name))+'</div>'}
