@@ -166,12 +166,15 @@ h1 .accent{color:#b36af8;text-shadow:0 0 34px rgba(154,66,245,.20)}
 
 /* FYND ADZ animated desktop pointer */
 .cursor-dot,.cursor-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:10050;border-radius:50%;opacity:0;will-change:transform,opacity}
+.cursor-particle{position:fixed;left:0;top:0;width:5px;height:5px;border-radius:50%;pointer-events:none;z-index:10049;background:#d9b7ff;box-shadow:0 0 8px #a64bff,0 0 17px rgba(154,66,245,.85);animation:cursorParticle .68s ease-out forwards}
+@keyframes cursorParticle{0%{opacity:.95;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.12)}}
 .cursor-dot{width:7px;height:7px;background:#f7eaff;box-shadow:0 0 9px #b86cff,0 0 22px #8a2be2;transform:translate3d(-50%,-50%,0)}
 .cursor-ring{width:34px;height:34px;border:1px solid rgba(190,124,255,.9);background:rgba(142,49,226,.07);box-shadow:0 0 18px rgba(147,55,235,.18),inset 0 0 12px rgba(147,55,235,.08);transform:translate3d(-50%,-50%,0) scale(1);transition:width .22s ease,height .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease,opacity .2s ease}
 .cursor-ring:after{content:"";position:absolute;inset:5px;border:1px solid rgba(196,145,255,.28);border-radius:50%}
 .cursor-dot.cursor-visible,.cursor-ring.cursor-visible{opacity:1}
 .cursor-ring.cursor-hover{width:49px;height:49px;border-color:#d5a7ff;background:rgba(154,66,245,.15);box-shadow:0 0 26px rgba(154,66,245,.4),inset 0 0 18px rgba(154,66,245,.14)}
-.cursor-ring.cursor-click{transform:translate3d(-50%,-50%,0) scale(.72);background:rgba(177,108,255,.27);box-shadow:0 0 38px rgba(154,66,245,.62)}
+.cursor-ring{scale:1;transition:width .22s ease,height .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,scale .18s ease,opacity .2s ease}
+.cursor-ring.cursor-click{scale:.72;background:rgba(177,108,255,.27);box-shadow:0 0 38px rgba(154,66,245,.62)}
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
  body,a,button,select,[role="button"]{cursor:none!important}
  input,textarea{cursor:text!important}
@@ -268,7 +271,39 @@ function openQr(encoded){const e=employees.find(x=>x.id===decodeURIComponent(enc
 function downloadQr(){const canvas=$('qrStage').querySelector('canvas'),img=$('qrStage').querySelector('img');const url=canvas?canvas.toDataURL('image/png'):img&&img.src;if(!url)return;const a=document.createElement('a');a.href=url;a.download=(currentQrEmployee?.id||'employee')+'-QR.png';a.click()}
 async function copyQrLink(){const s=$('qrLink').textContent;try{await navigator.clipboard.writeText(s);$('copyQrLink').textContent='Copied!'}catch{prompt('Copy profile link:',s)}}
 function downloadVCard(id){const e=employees.find(x=>x.id===id);if(!e)return;const clean=s=>String(s||'').replace(/[\r\n;]/g,' ');const v=['BEGIN:VCARD','VERSION:3.0','FN:'+clean(e.name),'ORG:FYND ADZ','TITLE:'+clean(e.role),e.phone?'TEL;TYPE=CELL:'+clean(e.phone):'',e.email?'EMAIL:'+clean(e.email):'',e.website?'URL:'+clean(e.website):'','END:VCARD'].filter(Boolean).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([v],{type:'text/vcard'}));a.download=e.id+'.vcf';a.click();URL.revokeObjectURL(a.href)}
-function initCustomCursor(){const dot=$('cursorDot'),ring=$('cursorRing');if(!dot||!ring||!window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;let visible=false;const move=e=>{const x=e.clientX,y=e.clientY;dot.style.transform='translate3d('+x+'px,'+y+'px,0) translate(-50%,-50%)';ring.style.transform='translate3d('+x+'px,'+y+'px,0) translate(-50%,-50%)';if(!visible){dot.classList.add('cursor-visible');ring.classList.add('cursor-visible');visible=true}};document.addEventListener('pointermove',move,{passive:true});document.addEventListener('pointerover',e=>{if(e.target.closest('a,button,select,[role="button"],.employee-card,.brand-emblem'))ring.classList.add('cursor-hover');else ring.classList.remove('cursor-hover')},{passive:true});document.addEventListener('pointerdown',()=>{ring.classList.add('cursor-click');dot.classList.add('cursor-visible')},{passive:true});document.addEventListener('pointerup',()=>ring.classList.remove('cursor-click'),{passive:true});document.addEventListener('pointerout',e=>{if(!e.relatedTarget){dot.classList.remove('cursor-visible');ring.classList.remove('cursor-visible');visible=false}},{passive:true});window.addEventListener('blur',()=>{dot.classList.remove('cursor-visible');ring.classList.remove('cursor-visible');visible=false})}
+function initCustomCursor(){
+ const dot=$('cursorDot'),ring=$('cursorRing');
+ if(!dot||!ring||!window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;
+ let visible=false,hasPointer=false,raf=0,targetX=0,targetY=0,ringX=0,ringY=0,lastParticleX=0,lastParticleY=0,lastParticleAt=0;
+ const position=(el,x,y)=>{el.style.transform='translate3d('+x+'px,'+y+'px,0) translate(-50%,-50%)'};
+ const animateRing=()=>{
+  ringX+=(targetX-ringX)*.18;ringY+=(targetY-ringY)*.18;position(ring,ringX,ringY);
+  if(Math.hypot(targetX-ringX,targetY-ringY)>.2){raf=requestAnimationFrame(animateRing)}else{position(ring,targetX,targetY);raf=0}
+ };
+ const addTrail=(x,y)=>{
+  const now=performance.now(),distance=Math.hypot(x-lastParticleX,y-lastParticleY);
+  if(distance<24||now-lastParticleAt<28)return;
+  lastParticleX=x;lastParticleY=y;lastParticleAt=now;
+  const particle=document.createElement('span');particle.className='cursor-particle';
+  particle.style.left=x+'px';particle.style.top=y+'px';
+  const angle=Math.random()*Math.PI*2,spread=10+Math.random()*20;
+  particle.style.setProperty('--dx',Math.cos(angle)*spread+'px');
+  particle.style.setProperty('--dy',Math.sin(angle)*spread+'px');
+  document.body.appendChild(particle);particle.addEventListener('animationend',()=>particle.remove(),{once:true});
+ };
+ const move=e=>{
+  targetX=e.clientX;targetY=e.clientY;position(dot,targetX,targetY);addTrail(targetX,targetY);
+  if(!visible){ringX=targetX;ringY=targetY;position(ring,ringX,ringY);dot.classList.add('cursor-visible');ring.classList.add('cursor-visible');visible=true}
+  hasPointer=true;if(!raf)raf=requestAnimationFrame(animateRing);
+ };
+ const hide=()=>{dot.classList.remove('cursor-visible');ring.classList.remove('cursor-visible');visible=false;hasPointer=false;if(raf){cancelAnimationFrame(raf);raf=0}};
+ document.addEventListener('pointermove',move,{passive:true});
+ document.addEventListener('pointerover',e=>{if(e.target.closest('a,button,select,[role="button"],.employee-card,.brand-emblem'))ring.classList.add('cursor-hover');else ring.classList.remove('cursor-hover')},{passive:true});
+ document.addEventListener('pointerdown',()=>{ring.classList.add('cursor-click');dot.classList.add('cursor-visible')},{passive:true});
+ document.addEventListener('pointerup',()=>ring.classList.remove('cursor-click'),{passive:true});
+ document.addEventListener('pointerout',e=>{if(!e.relatedTarget)hide()},{passive:true});
+ window.addEventListener('blur',hide);
+}
 function animateText(root=document){const selector='h1,h2,h3,p,.kicker,.hero-note,.top-actions .btn,.hero-actions .btn,.section-head p,.count,.dept-tag,.idtag,.employee-card h3,.employee-card .role,.card-actions .btn,.profile-kicker,.profile-main h1,.profile-role,.profile-id,.profile-bio,.detail,.profile-actions .btn,.footer span,.brand-sub,.emblem-caption span,.orbit-label,.modal-head h3,.helper';const nodes=root.querySelectorAll(selector);nodes.forEach((el,i)=>{el.classList.remove('text-motion');el.style.setProperty('--text-delay',Math.min(i,14)*55+'ms');void el.offsetWidth;el.classList.add('text-motion')})}
 function runIntro(){const intro=$('introOverlay');if(!intro)return;const directProfile=new URLSearchParams(location.search).has('id');const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(directProfile||reduce){intro.remove();return}intro.addEventListener('click',()=>{intro.classList.add('intro-leave');setTimeout(()=>intro.remove(),700)},{once:true});requestAnimationFrame(()=>intro.classList.add('intro-start'));setTimeout(()=>intro.classList.add('intro-leave'),2550);setTimeout(()=>intro.remove(),3250)}
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).classList.remove('show')));
