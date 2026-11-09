@@ -23,8 +23,17 @@
     "website": "",
     "instagram": "https://www.instagram.com/sa_f_uz/",
     "linkedin": "",
-    "photo": "assets/safuvan-fynd002.webp",
+    "photo": "",
     "status": "Active",
-    "bio": "Graphic Designer at FYNDADS."
+    "bio": "Graphic Designer at FYNDADS.",
+    "photoParts": [
+      "assets/photos/safuvan-01.txt",
+      "assets/photos/safuvan-02.txt",
+      "assets/photos/safuvan-03.txt",
+      "assets/photos/safuvan-04.txt",
+      "assets/photos/safuvan-05.txt",
+      "assets/photos/safuvan-06.txt",
+      "assets/photos/safuvan-07.txt"
+    ]
   }
 ]
