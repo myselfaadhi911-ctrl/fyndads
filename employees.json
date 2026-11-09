@@ -35,5 +35,27 @@
       "assets/photos/safuvan-06.txt",
       "assets/photos/safuvan-07.txt"
     ]
+  },
+  {
+    "id": "FYND003",
+    "name": "Sana",
+    "role": "Digital Marketer",
+    "department": "Marketing",
+    "phone": "9747042206",
+    "email": "fathiimasanaaa@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/sanaa.grows?dlrf=MTVkZWx2MDl1MmUzOA==",
+    "linkedin": "",
+    "photo": "",
+    "photoParts": [
+      "assets/photos/sana-fynd003-01.txt",
+      "assets/photos/sana-fynd003-02.txt",
+      "assets/photos/sana-fynd003-03.txt",
+      "assets/photos/sana-fynd003-04.txt",
+      "assets/photos/sana-fynd003-05.txt",
+      "assets/photos/sana-fynd003-06.txt"
+    ],
+    "status": "Active",
+    "bio": "Digital Marketer at FYNDADS."
   }
 ]
