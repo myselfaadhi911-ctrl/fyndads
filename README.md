@@ -1,38 +1,59 @@
 # FYNDADS Employee Digital ID
 
-Mobile-friendly public employee directory with individual profile pages and downloadable QR codes.
+Public, mobile-friendly employee directory with individual profile pages and QR code downloads.
 
-## Included
+## Public website
+https://myselfaadhi911-ctrl.github.io/fyndads/
+
+## Public features
 - Searchable employee directory and department filter
-- Individual profile URLs using `?id=FYND-001`
+- Individual profile URLs: `?id=FYND001`
 - QR code preview and PNG download for each employee
-- Add, edit, delete and import/export employee records
 - Call, WhatsApp, email, social links and downloadable vCard contact
 - Responsive FYNDADS purple theme
 
-## Publish with free GitHub Pages
-1. Open this repository's **Settings → Pages**.
-2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Choose branch **main** and folder **/(root)**, then click **Save**.
-4. Wait for GitHub Pages to finish publishing. The expected URL is:
-   https://myselfaadhi911-ctrl.github.io/fyndads/
+## Admin access (restricted through GitHub)
+The public website does not provide Add, Edit or Delete employee forms. The **Admin Login** link opens the repository's `employees.json` editor on GitHub.
 
-## Add actual employees
-The current `employees.json` contains three demo profiles. Replace their values before sharing the site.
-- Open the website and choose **Manage IDs → Add employee** to create records in the current browser.
-- Use **Export employees.json** to download the updated data.
-- Replace the repository's `employees.json` with that exported file and commit the change to publish updates to everyone.
+Only GitHub accounts with write permission to this repository can commit employee changes to the live site. Keep repository write access limited to the FYNDADS administrator. Do not grant collaborator write access unless you intend to let that person update employee records.
+
+### Add or update an employee
+1. Sign in to GitHub using the FYNDADS administrator account.
+2. Open the website's **Admin Login** link, or open:
+   https://github.com/myselfaadhi911-ctrl/fyndads/edit/main/employees.json
+3. Edit the JSON employee array. Keep every `id` unique.
+4. Click **Commit changes** to publish the updated directory.
+5. For a profile photo, upload the image to the repository's `assets/` folder, then set its relative path in the employee's `photo` field (for example, `assets/jahana-shirin.jpg`).
+
+Example record:
+```json
+{
+  "id": "FYND004",
+  "name": "Employee Name",
+  "role": "Designation",
+  "department": "Marketing",
+  "phone": "",
+  "email": "",
+  "website": "",
+  "instagram": "",
+  "linkedin": "",
+  "photo": "",
+  "status": "Active",
+  "bio": ""
+}
+```
+
+### Why GitHub is used for admin permissions
+GitHub Pages is static hosting and cannot securely protect an administrator password or write changes to a shared database on its own. The Admin Login link uses GitHub's own sign-in and repository write permissions instead of a password embedded in public website code. This means only the repository owner (and any collaborators deliberately granted write access) can publish employee changes. Do not add a client-side password to the website; visitors can inspect static website code.
 
 ## QR codes
-After Pages is live:
-1. Open the website.
-2. Choose **Manage IDs** or locate an employee card.
-3. Click **QR code**.
-4. Click **Download QR PNG** and print it on that employee's ID card.
+1. Open the public site.
+2. Find the employee card and click **QR code**.
+3. Click **Download QR PNG**.
+4. Scan-test the image before printing it on the employee ID card.
 
-QR codes contain only the stable employee profile URL, so profile details can be changed later without changing the printed code, as long as the employee ID and site URL remain the same.
+QR codes contain the employee's stable profile URL. Keep the employee ID and website URL unchanged to keep already printed QR codes working after profile details are updated.
 
-## Important limitation and privacy
-GitHub Pages is static hosting. This starter has no shared database and no secure administrator login. Changes made in Manage IDs initially remain in that browser only; export `employees.json` and commit it to publish shared updates. The repository is public, so treat all employee profiles and contact details as public information. Obtain consent before publishing details or photos. Never add passwords, personal identification numbers, financial information, or other sensitive data.
-
-QR code generation uses the QRCode.js library via a public CDN, so QR generation requires an internet connection.
+## Privacy
+This repository and website are public. Only publish employee details and photos with the employee's permission. Do not add passwords, personal identification numbers, financial information or other sensitive data.
+QR code generation uses the QRCode.js library via a public CDN and needs an internet connection.
