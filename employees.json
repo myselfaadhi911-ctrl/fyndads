@@ -95,5 +95,19 @@
     "photo": "",
     "status": "Active",
     "bio": "Digital Marketer at FYNDADS."
+  },
+  {
+    "id": "FYND007",
+    "name": "Thooba Faiza",
+    "role": "DM Head",
+    "department": "Marketing",
+    "phone": "6238182823",
+    "email": "thoobamk@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/thooba.faiza?obrf=MXdxd24zcmk1cWF0aQ%3D%3D&utm_source=qr",
+    "linkedin": "",
+    "photo": "",
+    "status": "Active",
+    "bio": "DM Head at FYNDADS."
   }
 ]
