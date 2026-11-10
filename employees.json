@@ -81,5 +81,19 @@
       "assets/photos/adhilsha-fynd005-04.txt",
       "assets/photos/adhilsha-fynd005-05.txt"
     ]
+  },
+  {
+    "id": "FYND006",
+    "name": "Bishr Mhd",
+    "role": "Digital Marketer",
+    "department": "Marketing",
+    "phone": "9778258773",
+    "email": "Bishrmuhammed3375@gmail.com",
+    "website": "",
+    "instagram": "https://www.instagram.com/allabout.bishr?vrfl=b3g2aDNhYnl0a3p6",
+    "linkedin": "",
+    "photo": "",
+    "status": "Active",
+    "bio": "Digital Marketer at FYNDADS."
   }
 ]
