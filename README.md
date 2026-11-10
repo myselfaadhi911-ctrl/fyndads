@@ -1,23 +1,28 @@
-# FYND ADZ – Employee Digital ID (v2)
+# FYND ADZ Website
 
-Animated employee directory with individual digital ID profiles, flip-card QR codes, downloadable QR PNGs and vCard contacts. Built with plain HTML, CSS and JavaScript for GitHub Pages.
+Five-page responsive website for FYND ADZ, built with static HTML, CSS and JavaScript for GitHub Pages.
 
-## Deployment
+## Pages
+- `index.html` — Home
+- `about.html` — About FYND ADZ
+- `services.html` — Services
+- `contact.html` — Contact and enquiry form
+- `employees.html` — Employee ID directory and digital profile pages
 
-The live site is hosted from the `main` branch using GitHub Pages. The public URL and existing `?id=FYND001` through `?id=FYND005` profile links are preserved, so previously printed QR codes continue to work.
+## Employee IDs and QR links
+Employee records are stored in `employees.json`. Individual profile URLs use `employees.html?id=FYND###`. QR codes generated on the Employee ID page point to those URLs. Older QR codes that used `/?id=FYND###` are redirected to the Employee ID page to preserve printed cards.
 
-## Employee administration
+Employee profiles include QR download, call/WhatsApp/email links where provided, and vCard contact export. Employee image assets are kept in `assets/`, including pre-split photo chunks in `assets/photos/`.
 
-The **Admin** link opens `employees.json` in GitHub. Saving changes requires being signed in to an account with repository write permission. This keeps employee edits restricted to authorized GitHub collaborators; visitors cannot add employees from the public website.
+## Admin access
+The Admin edit link opens `employees.json` in GitHub. Only a GitHub user signed in with repository write access can save employee changes. The public website does not expose an employee-add form to visitors.
 
-To add a person, add a record to `employees.json`, give them a unique `FYND###` ID, add their photo under `assets/people/` (or use `photoParts` for the pre-split image data already in `assets/photos/`), and set `status` to `Active`. Use `Inactive` to hide a profile without deleting its QR target.
+## Assets
+- `assets/brand/` — FYND ADZ logo assets
+- `assets/fonts/` — Nebula and custom Helvetica font files
+- `assets/photos/` — employee photo data chunks
+- `assets/*.webp` — employee portraits
+- `css/style.css` — shared responsive styling and motion
+- `js/app.js` — navigation, animation, employee rendering, QR generation and contact interactions
 
-## Project files
-
-- `index.html` – page structure and external QR library
-- `css/style.css` – responsive visual design, motion and layouts
-- `js/app.js` – directory, profiles, QR generation, vCard export, interactions and image loading
-- `employees.json` – employee details and photo references
-- `assets/` – brand artwork, fonts and employee photos
-
-The QR code library is loaded from cdnjs, so generating QR codes requires an internet connection.
+The QR code generator is loaded from cdnjs, and image chunks are fetched from the same GitHub Pages site. An internet connection is needed for those functions.
