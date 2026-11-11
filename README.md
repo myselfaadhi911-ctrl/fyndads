@@ -30,3 +30,7 @@ The QR code generator is loaded from cdnjs, and image chunks are fetched from th
 
 ## Employee management workspace
 The secure, installable cross-platform employee app lives in [`app/`](./app/). It uses Supabase Auth, Postgres with row-level security, GPS-at-punch attendance, task assignment and digital employee QR cards. See [`app/README.md`](./app/README.md) for setup and admin onboarding.
+
+
+## Website background
+The public marketing site uses `assets/brand/fyndadz-gradient-background.svg`, a smooth vector backdrop that scales cleanly across screen sizes. The public pages use the vector artwork in place of the old grain/canvas texture.
