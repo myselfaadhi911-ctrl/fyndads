@@ -93,7 +93,7 @@ function initAurora(){
  if(reduce){paint(performance.now());return}
  start();
 }
-initAurora();
+// Background is rendered by the high-resolution vector artwork.
 
 const ready=()=>{const done=()=>setTimeout(()=>root.classList.add('ready'),root.classList.contains('first')?950:250);(d.fonts?.ready||Promise.resolve()).then(done,done)};ready();
 if(!reduce){d.addEventListener('click',e=>{const a=e.target.closest?.('a[href]');if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target==='_blank'||a.hasAttribute('download'))return;const u=new URL(a.href,location.href);if(u.origin!==location.origin||u.pathname===location.pathname&&u.search===location.search)return;e.preventDefault();root.classList.add('leaving');setTimeout(()=>location.assign(u.href),340)})}

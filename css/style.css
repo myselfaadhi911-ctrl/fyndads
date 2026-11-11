@@ -26,3 +26,21 @@
 @media(max-width:620px){:root{--pad:21px}.site-header{height:74px}.brand{min-width:0}.brand-wordmark{width:145px;max-height:36px}.brand-caption{font-size:7px}.hero{padding-top:125px;padding-bottom:60px;gap:10px}.hero-title{font-size:clamp(46px,13.3vw,76px);margin:22px 0}.hero-description{font-size:15px}.hero-meta{margin-top:42px;font-size:8px}.hero-art{height:340px}.brand-orb{width:190px}.orbit{width:78%}.orbit-two{width:96%}.orbit-three{width:112%}.float-label{font-size:7px;padding:8px 10px}.ticker{margin-bottom:60px}.ticker-track span{font-size:19px}.home-intro,.service-preview{padding-bottom:85px}.intro-grid{gap:22px}.intro-grid .section-heading{font-size:46px}.intro-text p{font-size:16px}.section-top{display:block}.section-top .section-heading{font-size:43px}.desktop-only{display:none}.mobile-only{display:inline-block;margin-top:24px}.service-cards{grid-template-columns:1fr}.service-card{min-height:250px}.team-banner{display:block;padding:28px 24px;min-height:420px}.team-banner h2{font-size:56px}.team-banner .button{margin-top:28px}.banner-mark{font-size:320px;right:-8%;top:10%}.cta-strip{padding-bottom:90px}.cta-row h2{font-size:52px}.round-link{width:64px;height:64px}.page-hero{min-height:0;padding-top:142px;padding-bottom:65px}.page-title{font-size:clamp(49px,14vw,76px);margin:24px 0 40px}.page-hero-foot{display:block}.page-hero-foot p{margin-top:14px}.page-hero-shape{width:210px;height:210px;top:22%;right:-24%;opacity:.55}.about-statement{padding-top:45px;padding-bottom:85px}.statement-grid h2{font-size:48px}.statement-grid p{font-size:16px}.values-section,.service-process{padding:75px 0 85px}.values-grid{grid-template-columns:1fr}.value-card{min-height:0}.value-card h3{margin-top:18px}.about-end{padding-top:80px;padding-bottom:85px}.service-detail{grid-template-columns:36px 1fr;gap:10px;padding:35px 0}.service-detail h2{font-size:38px}.service-detail p{font-size:14px}.detail-symbol{display:none}.process-grid{grid-template-columns:1fr;gap:27px}.contact-layout{padding-top:45px;padding-bottom:90px;gap:42px}.contact-left h2{font-size:48px}.contact-form-wrap{padding:23px 18px}.directory-toolbar{display:block}.directory-search{margin-top:22px}.directory-search input,.directory-search select{width:100%;min-width:0}.employee-hero{padding-top:135px;padding-bottom:35px}.employee-grid{grid-template-columns:1fr}.employee-photo{height:390px}.employee-directory{padding-bottom:90px}.employee-profile{padding-top:115px;padding-bottom:90px}.profile-layout{grid-template-columns:1fr;gap:30px}.profile-portrait{height:460px;min-height:0;max-width:440px;width:100%;margin:auto}.profile-name{font-size:48px}.profile-info-row{grid-template-columns:95px 1fr}.footer-main{grid-template-columns:1fr auto;gap:25px}.footer-links{grid-column:1/-1;grid-row:2;gap:17px}.footer-top{grid-column:2;grid-row:1}.footer-bottom{display:grid;gap:8px}.qr-modal-card{padding:30px 16px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none}}
 .admin-link{white-space:nowrap;flex-shrink:0}.image-ready{animation:photoArrive .7s cubic-bezier(.16,1,.3,1) both}@keyframes photoArrive{from{opacity:0;filter:blur(7px);transform:scale(1.025)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+
+
+/* High-resolution vector backdrop; no raster grain or canvas noise. */
+.ambient{
+  background:#07040e url('../assets/brand/fyndadz-gradient-background.svg') 50% 50% / cover no-repeat!important;
+  background-size:110% 110%!important;
+  animation:fyndadzBackdropDrift 72s ease-in-out infinite alternate;
+  will-change:background-position;
+}
+.ambient .fx-canvas,.ambient i,.ambient .grain{display:none!important}
+@keyframes fyndadzBackdropDrift{
+  0%{background-position:47% 51%}
+  100%{background-position:53% 49%}
+}
+@media(max-width:680px){
+  .ambient{background-size:auto 112%!important;background-position:54% 50%;animation-duration:90s}
+}
+@media(prefers-reduced-motion:reduce){.ambient{animation:none!important;background-position:50% 50%!important}}
