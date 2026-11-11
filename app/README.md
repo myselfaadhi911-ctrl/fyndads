@@ -13,7 +13,7 @@ Installable cross-platform PWA for employee login, attendance, tasks, team direc
 The static app is served from this folder. Publish the repository with GitHub Pages using the repository root as the site root; the app will be available at `/app/`. Add the app URL to Supabase Auth > URL Configuration > Redirect URLs. For production, configure a custom domain and HTTPS.
 
 ## First admin setup
-1. Open `/app/` and request a magic sign-in link for `adhilshamohammed911@gmail.com`.
+1. Open the production FYNDADS Workspace and request a magic sign-in link for `myselfaadhi911@gmail.com`.
 2. Open the email link in the same browser/device.
 3. Use **Activate admin access** on the sign-in screen if shown, then refresh the session.
 4. Admin can save each employee's work email and send the invite from Team & ID cards.
