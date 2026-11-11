@@ -1,0 +1,23 @@
+name: FYNDADS workspace validation
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - ".github/workflows/workspace-check.yml"
+  pull_request:
+    paths:
+      - "app/**"
+      - ".github/workflows/workspace-check.yml"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax
+        run: node --check app/app.js
+      - name: Validate PWA manifest JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('app/manifest.webmanifest','utf8'))"
