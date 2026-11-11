@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10091b"><meta name="description" content="FYNDADS employee workspace">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="../assets/brand/fynd-adz-symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><title>FYNDADS Workspace</title>
+<link rel="stylesheet" href="./style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+</head>
+<body>
+<div class="ambient"></div>
+<section id="authView" class="auth-shell">
+ <div class="auth-brand"><img src="../assets/brand/fynd-adz-symbol.png" alt="FYNDADS"><span>FYNDADS <i>WORKSPACE</i></span></div>
+ <div class="auth-card"><p class="eyebrow">TEAM OPERATIONS PLATFORM</p><h1>Good work.<br><em>In sync.</em></h1><p class="muted">Sign in with your registered FYNDADS email. We'll send you a secure one-time link.</p>
+ <form id="loginForm"><label for="loginEmail">Work email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@fyndads.com" required><button class="btn primary wide" type="submit">Send secure sign-in link <span>↗</span></button></form>
+ <p id="authMessage" class="message" aria-live="polite"></p><button id="claimAdmin" class="text-button hidden">I am the workspace administrator · Activate admin access</button>
+ <p class="fine">Access is limited to invited team members.</p></div>
+ <div class="auth-foot">© FYNDADS · PEOPLE. PROJECTS. PROGRESS.</div>
+</section>
+<div id="appView" class="app-shell hidden">
+ <aside class="sidebar">
+  <a class="side-brand" href="#"><img src="../assets/brand/fynd-adz-symbol.png" alt=""><span>FYNDADS<small>WORKSPACE</small></span></a>
+  <div class="side-label">WORKSPACE</div>
+  <nav id="mainNav">
+   <button class="nav-item active" data-page="overview"><b>◫</b> Overview</button>
+   <button class="nav-item" data-page="attendance"><b>◷</b> Attendance</button>
+   <button class="nav-item" data-page="tasks"><b>▤</b> Tasks</button>
+   <button class="nav-item" data-page="team"><b>♙</b> Team & ID cards</button>
+   <button class="nav-item admin-only" data-page="reports"><b>▥</b> Reports</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="secure-note"><span class="live-dot"></span> Secure workspace<br><small>Synced with cloud database</small></div><button id="signOut" class="nav-item signout"><b>↪</b> Sign out</button></div>
+ </aside>
+ <main class="main">
+  <header class="topbar"><button id="mobileMenu" class="icon-btn" aria-label="Open menu">☰</button><div><p class="eyebrow" id="pageEyebrow">YOUR WORKSPACE</p><h2 id="pageTitle">Overview</h2></div><div class="top-user"><span class="avatar" id="userInitials">F</span><div><strong id="userName">Team member</strong><small id="userRole">Employee</small></div></div></header>
+  <div id="pageContent" class="content"></div>
+ </main>
+</div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><button id="closeModal" class="modal-close" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+<div id="toast" class="toast" role="status"></div>
+<script src="./app.js"></script>
+</body></html>
