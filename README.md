@@ -26,3 +26,7 @@ The Admin edit link opens `employees.json` in GitHub. Only a GitHub user signed 
 - `js/app.js` — navigation, animation, employee rendering, QR generation and contact interactions
 
 The QR code generator is loaded from cdnjs, and image chunks are fetched from the same GitHub Pages site. An internet connection is needed for those functions.
+
+
+## Employee management workspace
+The secure, installable cross-platform employee app lives in [`app/`](./app/). It uses Supabase Auth, Postgres with row-level security, GPS-at-punch attendance, task assignment and digital employee QR cards. See [`app/README.md`](./app/README.md) for setup and admin onboarding.
