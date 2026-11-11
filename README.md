@@ -34,3 +34,6 @@ The secure, installable cross-platform employee app lives in [`app/`](./app/). I
 
 ## Website background
 The public marketing site uses `assets/brand/fyndadz-gradient-background.svg`, a smooth vector backdrop that scales cleanly across screen sizes. The public pages use the vector artwork in place of the old grain/canvas texture.
+
+
+The public-site background is animated: the vector ribbons and separate violet light fields move on independent, slow non-linear CSS keyframe paths. The grain layer and old canvas renderer are disabled, and reduced-motion settings are respected.
