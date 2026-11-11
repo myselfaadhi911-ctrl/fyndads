@@ -1,9 +1,12 @@
 (()=>{'use strict';const css=`
-/* FYND ADZ crisp vector background and natural hero-logo proportions. */
+/* FYND ADZ animated vector artwork: real ribbon motion and drifting light. */
 .brand-orb img{width:58%;max-width:230px;height:auto!important;max-height:none!important;aspect-ratio:480/370;object-fit:contain;display:block}
-.ambient{background:#07040e url('./assets/brand/fyndadz-gradient-background.svg') 50% 50% / cover no-repeat!important;background-size:110% 110%!important;animation:fyndadzBackdropDrift 72s ease-in-out infinite alternate;will-change:background-position}
+.ambient{position:fixed;isolation:isolate;overflow:hidden;background:#07040e!important;pointer-events:none}
+.ambient::before{content:"";position:absolute;inset:-9%;z-index:0;background:url('./assets/brand/fyndadz-gradient-background.svg') 50% 50%/cover no-repeat;transform-origin:50% 50%;will-change:transform;animation:fyndadzRibbonFlow 48s cubic-bezier(.45,0,.55,1) infinite alternate}
+.ambient::after{content:"";position:absolute;z-index:1;inset:-15%;background:radial-gradient(ellipse at 18% 72%,rgba(111,37,221,.25),transparent 38%),radial-gradient(ellipse at 82% 22%,rgba(151,57,239,.24),transparent 35%),radial-gradient(ellipse at 62% 82%,rgba(67,34,166,.20),transparent 40%);background-size:130% 130%;mix-blend-mode:screen;opacity:.78;will-change:transform,background-position,opacity;animation:fyndadzLightFlow 31s cubic-bezier(.42,0,.58,1) infinite alternate}
 .ambient .fx-canvas,.ambient i,.ambient .grain{display:none!important}
-@keyframes fyndadzBackdropDrift{0%{background-position:47% 51%}100%{background-position:53% 49%}}
-@media(max-width:680px){.ambient{background-size:auto 112%!important;background-position:54% 50%;animation-duration:90s}}
-@media(prefers-reduced-motion:reduce){.ambient{animation:none!important;background-position:50% 50%!important}}
+@keyframes fyndadzRibbonFlow{0%{transform:translate3d(-1.8%,-1.1%,0) scale(1.075) rotate(-.32deg)}23%{transform:translate3d(1.1%,.65%,0) scale(1.105) rotate(.18deg)}51%{transform:translate3d(-.8%,1.15%,0) scale(1.12) rotate(.42deg)}76%{transform:translate3d(1.4%,-.4%,0) scale(1.09) rotate(-.12deg)}100%{transform:translate3d(2.1%,-1.2%,0) scale(1.13) rotate(-.38deg)}}
+@keyframes fyndadzLightFlow{0%{transform:translate3d(-3%,1.5%,0) scale(.96);background-position:0% 35%;opacity:.58}32%{transform:translate3d(2%,-1%,0) scale(1.04);background-position:55% 65%;opacity:.88}68%{transform:translate3d(-1.5%,-2%,0) scale(1.08);background-position:100% 20%;opacity:.68}100%{transform:translate3d(2.5%,1.5%,0) scale(.99);background-position:35% 100%;opacity:.9}}
+@media(max-width:680px){.ambient::before{inset:-5%;background-size:auto 100%;animation-duration:58s}.ambient::after{inset:-10%;opacity:.65;animation-duration:39s}}
+@media(prefers-reduced-motion:reduce){.ambient::before,.ambient::after{animation:none!important;transform:none!important}}
 `;const s=document.createElement('style');s.id='fyndadz-theme';s.textContent=css;document.head.append(s)})();
