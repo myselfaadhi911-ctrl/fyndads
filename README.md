@@ -40,3 +40,7 @@ The public-site background is animated: the vector ribbons and separate violet l
 
 
 Header polish: the unused pre-header curtain image has been removed from public pages; the skip-to-content link is visually hidden until keyboard focus; the desktop sticky header now compacts on scroll and tucks away while scrolling down, returning on scroll-up.
+
+
+### Website background motion
+The public site uses a minimal CSS-only flowing purple background. Two slow transform-based gradient layers provide the motion; there is no background image download, canvas loop, blur filter or grain texture. Motion pauses when the tab is hidden and is disabled for reduced-motion preferences.
