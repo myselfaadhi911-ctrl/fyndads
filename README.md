@@ -37,3 +37,6 @@ The public marketing site uses `assets/brand/fyndadz-gradient-background.svg`, a
 
 
 The public-site background is animated: the vector ribbons and separate violet light fields move on independent, slow non-linear CSS keyframe paths. The grain layer and old canvas renderer are disabled, and reduced-motion settings are respected.
+
+
+Header polish: the unused pre-header curtain image has been removed from public pages; the skip-to-content link is visually hidden until keyboard focus; the desktop sticky header now compacts on scroll and tucks away while scrolling down, returning on scroll-up.
