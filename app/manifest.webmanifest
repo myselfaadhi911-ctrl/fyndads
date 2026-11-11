@@ -1,0 +1,11 @@
+{
+  "name":"FYNDADS Workspace",
+  "short_name":"FYNDADS",
+  "description":"FYNDADS employee management and operations",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#0b0711",
+  "theme_color":"#10091b",
+  "icons":[{"src":"../assets/brand/fynd-adz-symbol.png","sizes":"192x192","type":"image/png","purpose":"any"}]
+}
