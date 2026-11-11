@@ -1,7 +1,7 @@
 /* FYNDADS Workspace — Supabase-backed PWA */
 const SUPABASE_URL='https://wxbybbpxkjfeklhqxkul.supabase.co';
 const SUPABASE_KEY='sb_publishable_AQGiQljqIZA-HcxXZxP5lw_BNPIVnsh';
-const ADMIN_EMAIL='adhilshamohammed911@gmail.com';
+const ADMIN_EMAIL='myselfaadhi911@gmail.com';
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=s=>document.querySelector(s);
 const state={session:null,user:null,profile:null,employees:[],tasks:[],attendance:[],updates:[],page:'overview',isAdmin:false};
