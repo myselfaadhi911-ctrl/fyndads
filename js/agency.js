@@ -1,0 +1,10 @@
+(()=>{'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const header=$('#siteHeader'),toggle=$('#menuToggle'),nav=$('#mainNav');
+if(header){const update=()=>header.classList.toggle('scrolled',scrollY>24);update();addEventListener('scroll',update,{passive:true})}
+if(toggle&&nav){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');nav.classList.toggle('open',open);document.body.classList.toggle('menu-open',open)});$$('a',nav).forEach(a=>a.addEventListener('click',()=>{toggle.setAttribute('aria-expanded','false');nav.classList.remove('open');document.body.classList.remove('menu-open')}));addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open'))toggle.click()})}
+$$('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
+const reveal=$$('[data-reveal]');
+if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const io=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){item.target.classList.add('is-visible');io.unobserve(item.target)}}),{threshold:.12});reveal.forEach(el=>io.observe(el))}else reveal.forEach(el=>el.classList.add('is-visible'));
+$$('form[data-mail-form]').forEach(form=>form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;const data=new FormData(form);const audit=form.dataset.mailForm==='audit';const subject=audit?'Digital audit request — '+data.get('business'):'FYNDADZ enquiry — '+data.get('service');const lines=[];for(const [key,value] of data.entries())lines.push(key.replace(/[_-]/g,' ').replace(/^./,s=>s.toUpperCase())+': '+value);const status=$('.form-status',form);if(status)status.textContent='Opening your email app with the details pre-filled…';location.href='mailto:fyndadz@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'))}));
+})();
