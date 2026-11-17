@@ -1,51 +1,22 @@
-# FYND ADZ Website
+# FYNDADZ Website
 
-Five-page responsive website for FYND ADZ, built with static HTML, CSS and JavaScript for GitHub Pages.
+A refreshed five-page public website for FYNDADZ, built with responsive static HTML, CSS and JavaScript.
 
-## Pages
+## Public pages
 - `index.html` — Home
-- `about.html` — About FYND ADZ
+- `about.html` — About
 - `services.html` — Services
-- `audit.html` — Digital audit request and review overview
+- `audit.html` — Digital audit information and request form
 - `contact.html` — Contact and enquiry form
-- `employees.html` — Employee ID directory and digital profile pages
 
+## Design
+The public marketing website uses the FYNDADZ purple identity (`#8A2BE2`) with a fresh light editorial layout, responsive navigation, reusable design components, and the repository's Nebula and Helvetica fonts.
 
-## Employee IDs and QR links
-Employee records are stored in `employees.json`. Individual profile URLs use `employees.html?id=FYND###`. QR codes generated on the Employee ID page point to those URLs. Older QR codes that used `/?id=FYND###` are redirected to the Employee ID page to preserve printed cards.
+## Forms
+The audit and contact forms prepare an email to `fyndadz@gmail.com` using the visitor's email application. They do not send or store submissions on the website. Connect a form backend to collect submissions directly online.
 
-Employee profiles include QR download, call/WhatsApp/email links where provided, and vCard contact export. Employee image assets are kept in `assets/`, including pre-split photo chunks in `assets/photos/`.
+## Employee ID workspace
+The existing employee directory and employee ID system are retained at `employees.html`, with its employee records in `employees.json` and supporting assets in `assets/`. The employee workspace in `app/` is unchanged.
 
-## Admin access
-The Admin edit link opens `employees.json` in GitHub. Only a GitHub user signed in with repository write access can save employee changes. The public website does not expose an employee-add form to visitors.
-
-## Assets
-- `assets/brand/` — FYND ADZ logo assets
-- `assets/fonts/` — Nebula and custom Helvetica font files
-- `assets/photos/` — employee photo data chunks
-- `assets/*.webp` — employee portraits
-- `css/style.css` — shared responsive styling and motion
-- `js/app.js` — navigation, animation, employee rendering, QR generation and contact interactions
-
-The QR code generator is loaded from cdnjs, and image chunks are fetched from the same GitHub Pages site. An internet connection is needed for those functions.
-
-
-## Employee management workspace
-The secure, installable cross-platform employee app lives in [`app/`](./app/). It uses Supabase Auth, Postgres with row-level security, GPS-at-punch attendance, task assignment and digital employee QR cards. See [`app/README.md`](./app/README.md) for setup and admin onboarding.
-
-
-## Website background
-The public marketing site uses `assets/brand/fyndadz-gradient-background.svg`, a smooth vector backdrop that scales cleanly across screen sizes. The public pages use the vector artwork in place of the old grain/canvas texture.
-
-
-The public-site background is animated: the vector ribbons and separate violet light fields move on independent, slow non-linear CSS keyframe paths. The grain layer and old canvas renderer are disabled, and reduced-motion settings are respected.
-
-
-Header polish: the unused pre-header curtain image has been removed from public pages; the skip-to-content link is visually hidden until keyboard focus; the desktop sticky header now compacts on scroll and tucks away while scrolling down, returning on scroll-up.
-
-
-### Website background motion
-The public site uses a minimal CSS-only flowing purple background. Two slow transform-based gradient layers provide the motion; there is no background image download, canvas loop, blur filter or grain texture. Motion pauses when the tab is hidden and is disabled for reduced-motion preferences.
-
-## Digital audit enquiries
-The `audit.html` page explains the review areas and prepares a digital-audit request email to `fyndadz@gmail.com`. The form opens the visitor's email application; it does not transmit or store submissions on the website.
+## Hosting
+The project is connected to Vercel through GitHub. Commits to the production branch trigger a new deployment.
