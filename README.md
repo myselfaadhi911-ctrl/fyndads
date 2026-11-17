@@ -1,22 +1,22 @@
 # FYNDADZ Website
 
-A refreshed five-page public website for FYNDADZ, built with responsive static HTML, CSS and JavaScript.
+A responsive five-page creative agency website built with static HTML, CSS and JavaScript.
 
 ## Public pages
 - `index.html` — Home
-- `about.html` — About
+- `about.html` — About FYNDADZ
 - `services.html` — Services
-- `audit.html` — Digital audit information and request form
+- `audit.html` — Digital audit and request form
 - `contact.html` — Contact and enquiry form
 
-## Design
-The public marketing website uses the FYNDADZ purple identity (`#8A2BE2`) with a fresh light editorial layout, responsive navigation, reusable design components, and the repository's Nebula and Helvetica fonts.
+## Visual identity
+The agency theme uses the FYNDADZ purple identity (`#8A2BE2`) with dark studio styling, bold typography, graphic service panels and responsive layouts. Fonts are Nebula and Helvetica from the repository assets.
 
 ## Forms
-The audit and contact forms prepare an email to `fyndadz@gmail.com` using the visitor's email application. They do not send or store submissions on the website. Connect a form backend to collect submissions directly online.
+Audit and contact forms prepare an email to `fyndadz@gmail.com` using the visitor's email application. They do not transmit or store submissions on this website. Connect a form backend to collect submissions directly online.
 
-## Employee ID workspace
-The existing employee directory and employee ID system are retained at `employees.html`, with its employee records in `employees.json` and supporting assets in `assets/`. The employee workspace in `app/` is unchanged.
+## Employee portal
+The existing employee ID directory remains available at `employees.html`, with records in `employees.json` and supporting assets in `assets/`. The employee app in `app/` is unchanged.
 
 ## Hosting
-The project is connected to Vercel through GitHub. Commits to the production branch trigger a new deployment.
+The repository is connected to Vercel through GitHub. Commits to the production branch trigger deployments.
