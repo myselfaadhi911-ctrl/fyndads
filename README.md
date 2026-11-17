@@ -6,8 +6,10 @@ Five-page responsive website for FYND ADZ, built with static HTML, CSS and JavaS
 - `index.html` — Home
 - `about.html` — About FYND ADZ
 - `services.html` — Services
+- `audit.html` — Digital audit request and review overview
 - `contact.html` — Contact and enquiry form
 - `employees.html` — Employee ID directory and digital profile pages
+
 
 ## Employee IDs and QR links
 Employee records are stored in `employees.json`. Individual profile URLs use `employees.html?id=FYND###`. QR codes generated on the Employee ID page point to those URLs. Older QR codes that used `/?id=FYND###` are redirected to the Employee ID page to preserve printed cards.
@@ -44,3 +46,6 @@ Header polish: the unused pre-header curtain image has been removed from public 
 
 ### Website background motion
 The public site uses a minimal CSS-only flowing purple background. Two slow transform-based gradient layers provide the motion; there is no background image download, canvas loop, blur filter or grain texture. Motion pauses when the tab is hidden and is disabled for reduced-motion preferences.
+
+## Digital audit enquiries
+The `audit.html` page explains the review areas and prepares a digital-audit request email to `fyndadz@gmail.com`. The form opens the visitor's email application; it does not transmit or store submissions on the website.
